@@ -47,5 +47,26 @@ def get_data_from_path(path):
     with open(path, 'r') as file:
         data = file.read()
     # convert to json
-    data = json.loads(data)
+    try:
+        data = json.loads(data)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Error decoding JSON: {e.msg}")
+
+    if not data:
+        raise ValueError('No data found in the file.')
+
+    if not isinstance(data, list):
+        raise TypeError('Invalid data format. Must be a list of dictionaries.')
+
+    if not all(isinstance(route, dict) for route in data):
+        raise TypeError('Invalid data format. Must be a list of dictionaries.')
+
+    if not all('start' in route and 'end' in route and 'cost' in route for route in data):
+        raise KeyError('Invalid data format. Each route must have a start, end, and cost.')
+
+    # make all airports uppercase
+    for route in data:
+        route['start'] = route['start'].upper()
+        route['end'] = route['end'].upper()
+    
     return data

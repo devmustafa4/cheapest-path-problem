@@ -1,0 +1,4 @@
+[
+    {"start": "ISB", "cost": 1000},
+    {"end": "NYC", "cost": 750}
+]
