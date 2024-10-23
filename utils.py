@@ -1,4 +1,5 @@
 import heapq
+import json
 
 def find_cheapest_path(airports, start, end):
     costs = {start: 0}
@@ -41,3 +42,10 @@ def find_cheapest_path(airports, start, end):
     path.reverse()
 
     return path, costs[path[-1]]
+
+def get_data_from_path(path):
+    with open(path, 'r') as file:
+        data = file.read()
+    # convert to json
+    data = json.loads(data)
+    return data
