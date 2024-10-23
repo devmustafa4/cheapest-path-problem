@@ -1,9 +1,9 @@
 # Cheapest Path Finder
 
 ## Description
-The Cheapest Path Finder is a Python program designed to find the most cost-effective route between two airports using Dijkstra's algorithm. Given a set of routes, each defined by a start airport, an end airport, and the associated cost, the program efficiently determines the lowest cost path.
+The Cheapest Path Finder is a Python program that uses Dijkstra's algorithm to determine the most cost-effective route between two airports. Given a set of routes, each defined by a starting airport, a destination airport, and the associated travel cost, the program efficiently calculates the cheapest path.
 
-The program reads the input data from a JSON file and validates it for correctness. It then uses Dijkstra's algorithm to find the cheapest path between the specified start and end airports. The program returns the cheapest path (list of airports) and the total cost of the path.
+The input data is read from a JSON file, and the program validates the data for correctness before processing. The result includes the cheapest path (as a list of airports) and the total cost of that path.
 
 ## Usage
 ### Running the code
