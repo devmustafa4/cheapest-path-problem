@@ -1,7 +1,19 @@
 import heapq
 import json
+from typing import Dict, List, Optional, Tuple
 
-def find_cheapest_path(airports, start, end):
+def find_cheapest_path(airports: List[Dict[str, str]], start: str, end: str) -> Tuple[Optional[List[str]], float]:
+    """
+    Finds the cheapest path from the start to the end airport using Dijkstra's algorithm.
+
+    Args:
+        airports (List[Dict[str, str]]): A list of dictionaries containing different routes between airports and their costs.
+        start (str): Target airport to start the journey.
+        end (str): Target airport for the journey to end.
+
+    Returns:
+        Tuple (Optional[List[str]], float): A tuple containing the cheapest path from the start to the end airport and the cost of the path.
+    """
     costs = {start: 0}
     cheapest_paths = {}
     min_heap = [(0, start)] 
@@ -43,7 +55,16 @@ def find_cheapest_path(airports, start, end):
 
     return path, costs[path[-1]]
 
-def get_data_from_path(path):
+def get_data_from_path(path: str) -> List[Dict[str, str]]:
+    """
+    Reads data from a JSON file and returns a list of dictionaries.
+
+    Args:
+        path (str): Path to the JSON file.
+
+    Returns:
+        List[Dict[str, str, float]]: A list of dictionaries containing different routes between airports and their costs.
+    """
     with open(path, 'r') as file:
         data = file.read()
     # convert to json
